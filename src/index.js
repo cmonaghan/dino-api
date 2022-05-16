@@ -1,3 +1,4 @@
+import url from 'url';
 /**
  * Welcome to Cloudflare Workers! This is your first worker.
  *
@@ -10,6 +11,21 @@
 
 export default {
   async fetch(request) {
-    return new Response("Hello World!");
+    console.log("method:", request.method);
+    // console.log("body:", request.body);
+    // console.log("headers:", request.headers);
+    // console.log("redirect:", request.redirect);
+    // console.log("cf:", JSON.stringify(request.cf)); // metadata from cloudflare about where the request originated
+    // console.log("url:", request.url);
+
+    try {
+      let queryParams = url.parse(request.url).query;
+      console.log(queryParams);
+      return new Response("Success!");
+    } catch (err) {
+      console.error(err);
+      return new Response("Error");
+    }
   },
+
 };
