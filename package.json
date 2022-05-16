@@ -1,0 +1,12 @@
+{
+  "name": "dino-api",
+  "version": "0.0.1",
+  "devDependencies": {
+    "wrangler": "2.0.5"
+  },
+  "private": true,
+  "scripts": {
+    "start": "wrangler dev",
+    "publish": "wrangler publish"
+  }
+}
