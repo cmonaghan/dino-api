@@ -1,31 +1,35 @@
 import url from 'url';
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npx wrangler dev src/index.js` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npx wrangler publish src/index.js --name my-worker` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
 
-export default {
-  async fetch(request) {
-    console.log("method:", request.method);
-    // console.log("body:", request.body);
-    // console.log("headers:", request.headers);
-    // console.log("redirect:", request.redirect);
-    // console.log("cf:", JSON.stringify(request.cf)); // metadata from cloudflare about where the request originated
-    // console.log("url:", request.url);
+addEventListener('fetch', event => {
+  let requestUrl = url.parse(event.request.url, true);
+  console.log(requestUrl.query);
 
-    try {
-      let queryParams = url.parse(request.url).query;
-      console.log(queryParams);
-      return new Response("Success!");
-    } catch (err) {
-      console.error(err);
-      return new Response("Error");
-    }
-  },
+  // list of some common dinosaurs: Tyrannosaurus Rex, Triceratops, Velociraptor, Stegosaurus, Spinosaurus, Archaeopteryx, Brachiosaurus, Pterodactyl, Allosaurus
+  const dinoData = [
+    {
+      name: "Tyrannosaurus Rex",
+      count: 3,
+      image: "https://webstockreview.net/images/clipart-dinosaur-silhouette-15.png",
+    },
+    {
+      name: "Triceratops",
+      count: 1,
+      image: "https://designlooter.com/images/herbivorous-svg-3.png",
+    },
+    {
+      name: "Pterodactyl",
+      count: 4,
+      image: "https://cdn3.iconfinder.com/data/icons/prehistoric-animals/100/05-512.png",
+    },
+  ];
 
-};
+  const json = JSON.stringify(dinoData, null, 2);
+
+  return event.respondWith(
+    new Response(json, {
+      headers: {
+        'content-type': 'application/json;charset=UTF-8',
+      },
+    })
+  );
+});
