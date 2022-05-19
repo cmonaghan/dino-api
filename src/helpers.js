@@ -36,7 +36,7 @@ const dinoConstantsDescendingOrder = [
 //     ...
 //   }
 // all emissions values assume tons CO2 equivalent
-export const covertEmissionsToDinos = (emissionsValue) => {
+export const convertEmissionsToDinos = (emissionsValue) => {
   let remainingValue = emissionsValue;
   let dinoData = [];
 

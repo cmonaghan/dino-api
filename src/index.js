@@ -1,6 +1,6 @@
 import url from 'url';
 import {
-  covertEmissionsToDinos,
+  convertEmissionsToDinos,
 } from './helpers.js';
 
 
@@ -11,7 +11,7 @@ addEventListener('fetch', event => {
   console.log(query);
 
   if (query && query.emissions) {
-    let dinoData = covertEmissionsToDinos(query.emissions);
+    let dinoData = convertEmissionsToDinos(query.emissions);
 
     const json = JSON.stringify(dinoData, null, 2);
 
