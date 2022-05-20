@@ -11,7 +11,8 @@
   "scripts": {
     "start": "wrangler dev",
     "publish": "wrangler publish",
-    "test": "jest ./test"
+    "test": "jest ./test",
+    "test-watch": "jest ./test --watch"
   },
   "jest": {
     "transform": {
