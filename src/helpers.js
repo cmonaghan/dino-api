@@ -1,59 +1,25 @@
-// list of some common dinosaurs: Tyrannosaurus Rex, Triceratops, Velociraptor, Stegosaurus, Spinosaurus, Archaeopteryx, Brachiosaurus, Pterodactyl, Allosaurus, Megalodon
-const dinoConstantsDescendingOrder = [
-  {
-    name: "Tyrannosaurus Rex",
-    emissionsPerDino: .8,
-    image: "https://webstockreview.net/images/clipart-dinosaur-silhouette-15.png",
-  },
-  {
-    name: "Brachiosaurus",
-    emissionsPerDino: .65,
-  },
-  {
-    name: "Megalodon",
-    emissionsPerDino: .47,
-  },
-  {
-    name: "Triceratops",
-    emissionsPerDino: .2,
-    image: "https://designlooter.com/images/herbivorous-svg-3.png",
-  },
-  {
-    name: "Pterodactyl",
-    emissionsPerDino: .01,
-    image: "https://cdn3.iconfinder.com/data/icons/prehistoric-animals/100/05-512.png",
-  }
-]
+const tRex = {
+  name: "Tyrannosaurus Rex",
+  weightTons: 8, // https://www.thoughtco.com/things-to-know-tyrannosaurus-1093804
+  image: "https://webstockreview.net/images/clipart-dinosaur-silhouette-15.png",
+};
 
+const PLANT_MATTER_TONS_IN_ONE_GALLON_GASOLINE = 98;
 
-// returns data in the format:
-//   const dinoData = [
-//     {
-//       name: "Tyrannosaurus Rex",
-//       count: 3,
-//       image: "https://webstockreview.net/images/clipart-dinosaur-silhouette-15.png",
-//     },
-//     ...
-//   }
-// all emissions values assume tons CO2 equivalent
-export const convertEmissionsToDinos = (emissionsValue) => {
-  let remainingValue = emissionsValue;
-  let dinoData = [];
+export const convertMilesToFuelGallons = (miles, mpg) => {
+  return miles / mpg;
+}
 
-  dinoConstantsDescendingOrder.forEach(dino => {
-    let maxDinos = Math.floor(remainingValue / dino.emissionsPerDino);
+export const convertFuelToOrganicMatterTons = (fuelGallons) => {
+  return fuelGallons * PLANT_MATTER_TONS_IN_ONE_GALLON_GASOLINE;
+}
 
-    if (maxDinos > 0) {
-      dinoData.push({
-        name: dino.name,
-        count: maxDinos,
-        image: dino.image,
-      });
+export const convertTonsToTRexCount = (tons) => {
+  let tRexCount = tons / tRex.weightTons;
 
-      // decrement remaining value so we know when all emissions are allocated
-      remainingValue = remainingValue - (maxDinos * dino.emissionsPerDino);
-    }
-  });
+  let tRexData = tRex;
+  delete tRex.weightTons;
+  tRexData.count = tRexCount;
 
-  return dinoData;
+  return tRexData;
 }

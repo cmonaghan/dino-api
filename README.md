@@ -16,7 +16,7 @@ An api that takes a carbon emissions value and returns the equivalent number of 
 
 ## Make a request
 
-  curl -G http://localhost:8787 -d "emissions=7"
+  curl -G http://localhost:8787 -d "miles=30" -d "mpg=20"
 
 ## Deploy to Cloudflare
 

@@ -1,6 +1,8 @@
 import url from 'url';
 import {
-  convertEmissionsToDinos,
+  convertMilesToFuelGallons,
+  convertFuelToOrganicMatterTons,
+  convertTonsToTRexCount,
 } from './helpers.js';
 
 
@@ -10,10 +12,14 @@ addEventListener('fetch', event => {
   const query = requestUrl.query
   console.log(query);
 
-  if (query && query.emissions) {
-    let dinoData = convertEmissionsToDinos(query.emissions);
+  if (query && query.miles && query.mpg) {
+    let fuelConsumed = convertMilesToFuelGallons(query.miles, query.mpg);
 
-    const json = JSON.stringify(dinoData, null, 2);
+    let tonsOfDino = convertFuelToOrganicMatterTons(fuelConsumed);
+
+    let tRexCount = convertTonsToTRexCount(tonsOfDino);
+
+    const json = JSON.stringify(tRexCount, null, 2);
 
     return event.respondWith(
       new Response(json, {
@@ -24,7 +30,7 @@ addEventListener('fetch', event => {
     );
   } else {
     return event.respondWith(
-      new Response("Error! Requests must include a query param in the format '?emissions={number}'", {
+      new Response("Error! Requests must include query params in the format '?miles={number}&mpg={number}'", {
         status: 400,
       })
     );
