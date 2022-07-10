@@ -1,6 +1,6 @@
 # Dino API
 
-An api that takes a carbon emissions value and returns the equivalent number of dinosaurs it took to produce that much fossil fuel.
+An API that takes car miles traveled and returns the equivalent number of dinosaurs (fossil fuel) it took to produce that much gasoline.
 
 ## Setup
 
