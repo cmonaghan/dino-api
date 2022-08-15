@@ -17,9 +17,16 @@ export const convertFuelToOrganicMatterTons = (fuelGallons) => {
 export const convertTonsToTRexCount = (tons) => {
   let tRexCount = tons / tRex.weightTons;
 
-  let tRexData = tRex;
-  delete tRex.weightTons;
-  tRexData.count = tRexCount;
+  // whitelist which fields we want to expose in the response
+  const whitelistedFields = [
+    "name",
+    "image",
+  ];
+  let returnedData = {};
+  whitelistedFields.forEach(field => {
+    returnedData[field] = tRex[field]
+  })
+  returnedData.count = tRexCount;
 
-  return tRexData;
+  return returnedData;
 }

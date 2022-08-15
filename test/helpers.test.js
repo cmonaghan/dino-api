@@ -50,8 +50,17 @@ describe("convertTonsToTRexCount", () => {
   test("object has expected properties", () => {
     let result = convertTonsToTRexCount(10);
 
-    expect(result.hasOwnProperty("name")).toBe(true);
-    expect(result.hasOwnProperty("count")).toBe(true);
-    expect(result.hasOwnProperty("image")).toBe(true);
+    expect(result.name).toBeDefined();
+    expect(result.count).toBeDefined();
+    expect(result.image).toBeDefined();
+    expect(result.weightTons).not.toBeDefined();
+  });
+
+  test("it converts tons to expected dino values", () => {
+    let result = convertTonsToTRexCount(10);
+
+    expect(result.name).toBe("Tyrannosaurus Rex");
+    expect(result.count).toBe(1.25);
+    expect(result.image).toBe("https://webstockreview.net/images/clipart-dinosaur-silhouette-15.png");
   });
 });
