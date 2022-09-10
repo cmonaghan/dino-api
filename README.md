@@ -16,7 +16,10 @@ An API that takes car miles traveled and returns the equivalent number of dinosa
 
 ## Make a request
 
+  # local
   curl -G http://localhost:8787 -d "miles=30" -d "mpg=20"
+  # production
+  curl -G https://dino.api.woolgathering.io -d "miles=30" -d "mpg=20"
 
 ## Deploy to Cloudflare
 

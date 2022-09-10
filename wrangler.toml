@@ -1,3 +1,5 @@
 name = "dino-api"
 main = "src/index.js"
+node_compat = true
 compatibility_date = "2022-05-16"
+routes = [ { pattern = "dino.api.woolgathering.io", custom_domain = true } ]
