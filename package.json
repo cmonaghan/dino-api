@@ -2,10 +2,10 @@
   "name": "dino-api",
   "version": "0.0.1",
   "devDependencies": {
-    "@babel/preset-env": "^7.18.0",
-    "babel-jest": "^28.1.0",
-    "jest": "^28.1.0",
-    "wrangler": "2.0.5"
+    "@babel/preset-env": "^7.19.0",
+    "babel-jest": "^29.0.3",
+    "jest": "^29.0.3",
+    "wrangler": "^2.0.29"
   },
   "private": true,
   "scripts": {

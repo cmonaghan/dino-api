@@ -22,6 +22,22 @@ An API that takes car miles traveled and returns the equivalent number of dinosa
 
   wrangler publish
 
+## Upgrade `npm` packages
+
+### See outdated packages
+
+  npm outdated
+
+### Upgrade all packages to latest
+
+  # install ncu if you don't have it yet
+  npm install -g npm-check-updates
+  # update all packages to latest version
+  ncu --upgrade
+  # install new package versions
+  npm install
+
+
 ## Reference
 
 - [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/commands/)
