@@ -2,43 +2,55 @@
 
 An API that takes car miles traveled and returns the equivalent number of dinosaurs (fossil fuel) it took to produce that much gasoline.
 
-## Setup
+## See it live
 
-  npm install
+### From the browser
 
-## Run tests
+https://dino.api.woolgathering.io/?miles=400&mpg=30 (You can change the query params to in the url to see the impact of different trips.)
 
-  npm test
+### From the command line
 
-## Run locally
+    curl -G https://dino.api.woolgathering.io -d "miles=400" -d "mpg=30"
 
-  wrangler dev
 
-## Make a request
+## Development
+### Setup
 
-  # local
-  curl -G http://localhost:8787 -d "miles=30" -d "mpg=20"
-  # production
-  curl -G https://dino.api.woolgathering.io -d "miles=30" -d "mpg=20"
+    npm install
 
-## Deploy to Cloudflare
+### Run tests
 
-  wrangler publish
+    npm test
 
-## Upgrade `npm` packages
+### Run locally
 
-### See outdated packages
+    wrangler dev
 
-  npm outdated
+### Make a request
 
-### Upgrade all packages to latest
+    # local
+    curl -G http://localhost:8787 -d "miles=400" -d "mpg=30"
+    # production
+    curl -G https://dino.api.woolgathering.io -d "miles=400" -d "mpg=30"
 
-  # install ncu if you don't have it yet
-  npm install -g npm-check-updates
-  # update all packages to latest version
-  ncu --upgrade
-  # install new package versions
-  npm install
+### Deploy to Cloudflare
+
+    wrangler publish
+
+### Upgrade `npm` packages
+
+See outdated packages
+
+    npm outdated
+
+Upgrade all packages to latest
+
+    # install ncu if you don't have it yet
+    npm install -g npm-check-updates
+    # update all packages to latest version
+    ncu --upgrade
+    # install new package versions
+    npm install
 
 
 ## Reference
